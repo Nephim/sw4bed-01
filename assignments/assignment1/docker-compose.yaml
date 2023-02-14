@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.API
+    image: nephim/bakery-api
+    ports:
+      - "6000:80"
+  web:
+    build:
+      dockerfile: Dockerfile.WEB
+    image: nephim/bakery-web
+    ports:
+      - "5000:80"
+    environment:
+      - API_URL=http://api:80
+      
